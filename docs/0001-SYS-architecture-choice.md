@@ -12,6 +12,7 @@ Accepted
 - normal workload (hundreds of emails/day), but high utilization possible in the future (millions/day)
   - should be easy to adopt to this new workload requirement
   - no need to do this right now
+- no need to have detialed history of particular e-mail
   
 ## Choices
 

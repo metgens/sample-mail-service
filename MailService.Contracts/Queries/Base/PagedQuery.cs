@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MailService.Common.Bus.Query;
+using System;
 using System.Collections.Generic;
 using System.Text;
 

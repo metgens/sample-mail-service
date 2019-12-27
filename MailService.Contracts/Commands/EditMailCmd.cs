@@ -18,7 +18,7 @@ namespace MailService.Contracts.Commands
 
         [JsonConstructor]
         public EditMailCmd(Guid mailId, string from, List<string> to, string subject, string body, bool isBodyHtml,
-            CustomMailPriority? priority)
+            CustomMailPriority? priority = null)
         {
             MailId = mailId;
             From = from;

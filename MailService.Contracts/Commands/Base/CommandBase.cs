@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MailService.Common.Bus.Command;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MailService.Contracts.Commands.Base
 {
-    public class CommandBase
+    public class CommandBase : ICommand
     {
         public Guid Id { get; }
 

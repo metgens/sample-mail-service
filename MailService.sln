@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{51612325-2
 		docs\0001-SYS-architecture-choice.md = docs\0001-SYS-architecture-choice.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailService.Common", "MailService.Common\MailService.Common.csproj", "{BA0D224E-05AE-45D7-B5B0-3F2CDBA6B758}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{7E831C6C-17E1-4685-AA2E-1D8E83B3D40D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +36,16 @@ Global
 		{DDA3D820-3CFE-4F02-956B-D09E9FE184C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDA3D820-3CFE-4F02-956B-D09E9FE184C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDA3D820-3CFE-4F02-956B-D09E9FE184C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA0D224E-05AE-45D7-B5B0-3F2CDBA6B758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA0D224E-05AE-45D7-B5B0-3F2CDBA6B758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA0D224E-05AE-45D7-B5B0-3F2CDBA6B758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA0D224E-05AE-45D7-B5B0-3F2CDBA6B758}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BA0D224E-05AE-45D7-B5B0-3F2CDBA6B758} = {7E831C6C-17E1-4685-AA2E-1D8E83B3D40D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62E5480F-C9A5-4070-99F5-158EB251F24B}
