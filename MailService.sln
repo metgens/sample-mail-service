@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailService.Api", "MailService.Api\MailService.Api.csproj", "{46C4F68F-721F-4DE5-B04C-66FCF877674E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailService.Domain", "MailService.Domain\MailService.Domain.csproj", "{9B02FA20-3A6D-4519-9D1E-4134449BC8CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailService.Contracts", "MailService.Contracts\MailService.Contracts.csproj", "{DDA3D820-3CFE-4F02-956B-D09E9FE184C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{51612325-213E-40C1-B169-3CE2A727CEA9}"
+	ProjectSection(SolutionItems) = preProject
+		docs\0001-SYS-architecture-choice.md = docs\0001-SYS-architecture-choice.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46C4F68F-721F-4DE5-B04C-66FCF877674E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C4F68F-721F-4DE5-B04C-66FCF877674E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C4F68F-721F-4DE5-B04C-66FCF877674E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C4F68F-721F-4DE5-B04C-66FCF877674E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B02FA20-3A6D-4519-9D1E-4134449BC8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B02FA20-3A6D-4519-9D1E-4134449BC8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B02FA20-3A6D-4519-9D1E-4134449BC8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B02FA20-3A6D-4519-9D1E-4134449BC8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDA3D820-3CFE-4F02-956B-D09E9FE184C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA3D820-3CFE-4F02-956B-D09E9FE184C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA3D820-3CFE-4F02-956B-D09E9FE184C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA3D820-3CFE-4F02-956B-D09E9FE184C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {62E5480F-C9A5-4070-99F5-158EB251F24B}
+	EndGlobalSection
+EndGlobal
