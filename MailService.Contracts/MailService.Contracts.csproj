@@ -12,4 +12,8 @@
     <ProjectReference Include="..\MailService.Common\MailService.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Queries\Base\" />
+  </ItemGroup>
+
 </Project>

@@ -12,6 +12,8 @@ namespace MailService.Domain
         public string Content { get; private set; }
         public string ContentType { get; private set; }
 
+        public Mail Mail { get; private set; }
+
         public MailAttachment (string name, string content, string contentType)
         {
             Name = name;

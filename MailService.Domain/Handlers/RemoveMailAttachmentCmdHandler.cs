@@ -13,9 +13,9 @@ namespace MailService.Domain.Handlers
 {
     public class RemoveMailAttachmentCmdHandler : ICommandHandler<RemoveMailAttachmentCmd>
     {
-        private readonly IMailRepository _mailRepository;
+        private readonly IMailWriteRepository _mailRepository;
 
-        public RemoveMailAttachmentCmdHandler(IMailRepository mailRepository)
+        public RemoveMailAttachmentCmdHandler(IMailWriteRepository mailRepository)
         {
             _mailRepository = mailRepository;
         }

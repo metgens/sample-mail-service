@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace MailService.Domain.Repositories
 {
-    public interface IMailRepository
+    public interface IMailWriteRepository
     {
         Task<Mail> GetAsync(Guid id);
-        Task AddAsync(Mail mail);
-        Task UpdateAsync(Mail mail);
+        void Add(Mail mail);
         Task SaveChangesAsync();
     }
 }

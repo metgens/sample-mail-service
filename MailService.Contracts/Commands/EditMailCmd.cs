@@ -8,7 +8,7 @@ namespace MailService.Contracts.Commands
 {
     public class EditMailCmd : CommandBase
     {
-        public Guid MailId { get; }
+        public Guid Id { get; }
         public string From { get; }
         public List<string> To { get; }
         public string Subject { get; }
@@ -17,10 +17,10 @@ namespace MailService.Contracts.Commands
         public CustomMailPriority? Priority { get; }
 
         [JsonConstructor]
-        public EditMailCmd(Guid mailId, string from, List<string> to, string subject, string body, bool isBodyHtml,
+        public EditMailCmd(Guid id, string from, List<string> to, string subject, string body, bool isBodyHtml,
             CustomMailPriority? priority = null)
         {
-            MailId = mailId;
+            Id = id;
             From = from;
             To = to;
             Subject = subject;

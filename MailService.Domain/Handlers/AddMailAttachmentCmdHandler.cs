@@ -13,9 +13,9 @@ namespace MailService.Domain.Handlers
 {
     public class AddMailAttachmentCmdHandler : ICommandHandler<AddMailAttachmentCmd>
     {
-        private readonly IMailRepository _mailRepository;
+        private readonly IMailWriteRepository _mailRepository;
 
-        public AddMailAttachmentCmdHandler(IMailRepository mailRepository)
+        public AddMailAttachmentCmdHandler(IMailWriteRepository mailRepository)
         {
             _mailRepository = mailRepository;
         }

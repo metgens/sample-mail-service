@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MailService.Common\MailService.Common.csproj" />
     <ProjectReference Include="..\MailService.Contracts\MailService.Contracts.csproj" />
   </ItemGroup>

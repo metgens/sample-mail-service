@@ -1,4 +1,4 @@
-# SYS - Architecture choice
+# SYS - Architecture choice - CQRS
 
 Date: 2019-12-27
 

@@ -12,9 +12,9 @@ namespace MailService.Domain.Handlers
 {
     public class CreateMailCmdHandler : ICommandHandler<CreateMailCmd>
     {
-        private readonly IMailRepository _mailRepository;
+        private readonly IMailWriteRepository _mailRepository;
 
-        public CreateMailCmdHandler(IMailRepository mailRepository)
+        public CreateMailCmdHandler(IMailWriteRepository mailRepository)
         {
             _mailRepository = mailRepository;
         }

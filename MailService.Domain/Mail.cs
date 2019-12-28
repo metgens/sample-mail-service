@@ -10,7 +10,7 @@ using System.Text;
 
 namespace MailService.Domain
 {
-    public class Mail : BaseEntity, IEntityWithGuidId
+    public class Mail : EntityBase, IEntityWithGuidId
     {
         public Guid Id { get; private set; }
         public string From { get; private set; }
@@ -21,7 +21,6 @@ namespace MailService.Domain
         public CustomMailPriority Priority { get; private set; } = CustomMailPriority.Normal;
         public MailStatus Status { get; private set; } = MailStatus.Pending;
         public DateTimeOffset? SentDate { get; private set; }
-
         public List<MailAttachment> Attachments { get; private set; } = new List<MailAttachment>();
 
         public static Mail Create(string from, List<string> to, string subject, string body, bool isHtml)

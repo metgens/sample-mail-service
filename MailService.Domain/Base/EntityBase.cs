@@ -6,12 +6,12 @@ using System.Text;
 
 namespace MailService.Domain.Base
 {
-    public class BaseEntity
+    public class EntityBase
     {
         public DateTimeOffset CreatedDate { get; protected set; }
         public DateTimeOffset? UpdatedDate { get; protected set; }
 
-        public BaseEntity()
+        public EntityBase()
         {
             CreatedDate = SystemTimeOffset.UtcNow;
             SetUpdatedDate();

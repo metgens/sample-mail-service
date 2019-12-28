@@ -10,9 +10,9 @@ namespace MailService.Domain.Handlers
 {
     public class EditMailCmdHandler : ICommandHandler<EditMailCmd>
     {
-        private readonly IMailRepository _mailRepository;
+        private readonly IMailWriteRepository _mailRepository;
 
-        public EditMailCmdHandler(IMailRepository mailRepository)
+        public EditMailCmdHandler(IMailWriteRepository mailRepository)
         {
             _mailRepository = mailRepository;
         }
