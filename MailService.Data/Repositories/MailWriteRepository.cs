@@ -4,6 +4,7 @@ using MailService.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +34,16 @@ namespace MailService.Data.Repositories
             return await _repository.Context.Mails
                 .Include(x => x.Attachments)
                 .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<List<Mail>> GetPendingAsync(int maxRows)
+        {
+            return await _repository.Context.Mails
+                 .Include(x => x.Attachments)
+                 .Where(x => x.Status == Contracts.Enums.MailStatus.Pending)
+                 .OrderBy(x => x.CreatedDate)
+                 .Take(maxRows)
+                 .ToListAsync();
         }
     }
 }

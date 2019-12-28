@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 namespace MailService.Contracts.Commands
 {
-    public class SendAllPendingMailsCmd : CommandBase
+    public class SendPendingMailsCmd : CommandBase
     {
+        public int MaxNumberToSend { get; set; } = 500;
     }
 }

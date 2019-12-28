@@ -7,7 +7,6 @@ namespace MailService.Contracts.Enums
     public enum MailStatus
     {
         Pending,
-        Sending,
         Sent,
         Rejected,
     }

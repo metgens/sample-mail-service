@@ -27,11 +27,8 @@ namespace MailService.Domain.Handlers
             if (mail is null)
                 throw AppException.NotExisting(typeof(Mail).Name, request.MailId);
 
-            mail.MarkAsSending();
-            await _mailRepository.SaveChangesAsync();
-
             var mailSender = _mailSenderFactory.GetMailSender();
-            await mailSender.SendMailAsync(mail.From, mail.To, mail.Subject, mail.Body, mail.IsHtml);
+            await mailSender.SendMailAsync(mail);
 
             mail.MarkAsSent();
             await _mailRepository.SaveChangesAsync();

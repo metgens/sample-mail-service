@@ -23,6 +23,14 @@ namespace MailService.Domain.Handlers
         {
             var mail = Mail.Create(request.From, request.To, request.Subject, request.Body, request.IsHtml);
 
+            if (request.Attachments != null)
+            {
+                foreach(var attachment in request.Attachments)
+                {
+                    mail.AddAttachment(attachment.Name, attachment.Content, attachment.Encoding, attachment.MediaType);
+                }
+            }
+
             _mailRepository.Add(mail);
             await _mailRepository.SaveChangesAsync();
             

@@ -11,13 +11,15 @@ namespace MailService.Domain
         public Guid MailId { get; private set; }
         public string Name { get; private set; }
         public string Content { get; private set; }
-        public string ContentType { get; private set; }
+        public string Encoding { get; private set; }
+        public string MediaType { get; private set; }
 
-        public MailAttachment (string name, string content, string contentType)
+        public MailAttachment (string name, string content, string encoding, string mediaType)
         {
             Name = name;
             Content = content;
-            ContentType = contentType;
+            MediaType = mediaType;
+            Encoding = encoding;
         }
     }
 }

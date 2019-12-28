@@ -61,7 +61,7 @@ namespace MailService.Data.Migrations
 
                     b.Property<string>("Content");
 
-                    b.Property<string>("ContentType");
+                    b.Property<string>("mediaType");
 
                     b.Property<Guid>("MailId");
 

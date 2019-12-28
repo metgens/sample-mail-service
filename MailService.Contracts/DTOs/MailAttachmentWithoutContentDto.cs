@@ -6,6 +6,6 @@ namespace MailService.Contracts.DTOs
     {
         public Guid Id { get; private set; }
         public string Name { get; private set; }
-        public string ContentType { get; private set; }
+        public string MediaType { get; private set; }
     }
 }

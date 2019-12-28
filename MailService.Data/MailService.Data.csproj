@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20191228215746_AddedEncodingToMailAttribute.cs" />
+    <Compile Remove="Migrations\20191228215746_AddedEncodingToMailAttribute.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="appsettings.migrations.json" />
   </ItemGroup>
 

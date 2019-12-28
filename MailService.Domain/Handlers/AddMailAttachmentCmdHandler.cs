@@ -28,7 +28,7 @@ namespace MailService.Domain.Handlers
             if (mail is null)
                 throw AppException.NotExisting(typeof(Mail).Name, request.MailId);
 
-            mail.AddAttachment(request.Name, request.Content, request.ContentType);
+            mail.AddAttachment(request.Name, request.Content, request.Encoding, request.MediaType);
 
             await _mailRepository.SaveChangesAsync();
 

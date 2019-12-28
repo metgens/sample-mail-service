@@ -35,28 +35,30 @@ namespace MailService.Api.Controllers
         [HttpPut("{mailId}")]
         public async Task<IActionResult> EditMail([FromRoute]Guid mailId, [FromBody]EditMailCmd command)
         {
+            command.SetMailId(mailId);
             await _commandBus.Send(command);
             return Ok();
         }
 
         [HttpPost("{mailId}/attachments")]
-        public async Task<IActionResult> AddMailAttachment(AddMailAttachmentCmd command)
+        public async Task<IActionResult> AddMailAttachment([FromRoute]Guid mailId, AddMailAttachmentCmd command)
         {
+            command.SetMailId(mailId);
             await _commandBus.Send(command);
             return Ok();
         }
 
-        [HttpDelete("{mailId}/attachments/{attachmentGuid}")]
-        public async Task<IActionResult> RemoveMailAttachment(RemoveMailAttachmentCmd command)
+        [HttpDelete("{mailId}/attachments/{attachmentId}")]
+        public async Task<IActionResult> RemoveMailAttachment([FromRoute]Guid mailId, [FromRoute]Guid attachmentId)
         {
-            await _commandBus.Send(command);
+            await _commandBus.Send(new RemoveMailAttachmentCmd(mailId, attachmentId));
             return Ok();
         }
 
         [HttpPost("send")]
-        public async Task<IActionResult> SendAllPendingMails()
+        public async Task<IActionResult> SendPendingMails()
         {
-            await _commandBus.Send(new SendAllPendingMailsCmd());
+            await _commandBus.Send(new SendPendingMailsCmd());
             return Accepted();
         }
 
@@ -78,13 +80,15 @@ namespace MailService.Api.Controllers
         [HttpGet("{mailId}")]
         public async Task<IActionResult> GetMail([FromRoute]Guid mailId)
         {
-            throw new NotImplementedException();
+            var results = await _queryBus.Send<GetMailQuery, MailDto>(new GetMailQuery(mailId));
+            return Ok(results);
         }
 
         [HttpGet("{mailId}/status")]
         public async Task<IActionResult> GetMailStatus([FromRoute]Guid mailId)
         {
-            throw new NotImplementedException();
+            var results = await _queryBus.Send<GetMailStatusQuery, string>(new GetMailStatusQuery(mailId));
+            return Ok(results);
         }
 
     }

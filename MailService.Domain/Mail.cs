@@ -51,12 +51,6 @@ namespace MailService.Domain
                 ChangePriority(priority.Value);
         }
 
-        public void MarkAsSending()
-        {
-            Status = MailStatus.Sending;
-            SetUpdatedDate();
-        }
-
         public void MarkAsSent(DateTimeOffset? date = null)
         {
             Status = MailStatus.Sent;
@@ -76,11 +70,11 @@ namespace MailService.Domain
             SetUpdatedDate();
         }
 
-        public void AddAttachment(string name, string content, string contentType)
+        public void AddAttachment(string name, string content, string encoding, string mediaType)
         {
             CheckRule(new OnlyPendingMailCanBeEdited(this));
 
-            Attachments.Add(new MailAttachment(name, content, contentType));
+            Attachments.Add(new MailAttachment(name, content, encoding, mediaType));
             SetUpdatedDate();
         }
 

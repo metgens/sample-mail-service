@@ -36,7 +36,7 @@ CREATE TABLE [ms].[MailAttachments] (
     [MailId] uniqueidentifier NOT NULL,
     [Name] nvarchar(max) NULL,
     [Content] nvarchar(max) NULL,
-    [ContentType] nvarchar(max) NULL,
+    [mediaType] nvarchar(max) NULL,
     CONSTRAINT [PK_MailAttachments] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_MailAttachments_Mails_MailId] FOREIGN KEY ([MailId]) REFERENCES [ms].[Mails] ([Id]) ON DELETE CASCADE
 );

@@ -12,13 +12,14 @@ namespace MailService.Contracts.Commands
         public string Subject { get; }
         public string Body { get; }
         public bool IsHtml { get; }
-        public CustomMailPriority? Priority { get; }
+
+        public string Priority { get; }
 
         public List<AddMailAttachmentSimplifiedCmd> Attachments { get; }
 
         [JsonConstructor]
         public CreateMailCmd(string from, List<string> to, string subject, string body, bool isHtml,
-            CustomMailPriority? priority = null, List<AddMailAttachmentSimplifiedCmd> attachments = null)
+            string priority = null, List<AddMailAttachmentSimplifiedCmd> attachments = null)
         {
             From = from;
             To = to;
@@ -34,15 +35,16 @@ namespace MailService.Contracts.Commands
         {
             public string Name { get; }
             public string Content { get; }
-            public string ContentType { get; }
-
-
+            public string Encoding { get; }
+            public string MediaType { get; }
+            
             [JsonConstructor]
-            public AddMailAttachmentSimplifiedCmd(string name, string content, string contentType)
+            public AddMailAttachmentSimplifiedCmd(string name, string content, string encoding, string mediaType)
             {
                 Name = name;
                 Content = content;
-                ContentType = contentType;
+                Encoding = encoding;
+                MediaType = mediaType;
             }
 
         }

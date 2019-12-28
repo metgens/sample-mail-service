@@ -4,14 +4,16 @@ using MailService.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MailService.Data.Migrations
 {
     [DbContext(typeof(MailServiceContext))]
-    partial class MailServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20191228215947_AddedEncodingToMailAttribute")]
+    partial class AddedEncodingToMailAttribute
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
