@@ -19,10 +19,10 @@ namespace MailService.Domain.Handlers
 
         public async Task<Unit> Handle(EditMailCmd request, CancellationToken cancellationToken)
         {
-            var mail = await _mailRepository.GetAsync(request.CommandId);
+            var mail = await _mailRepository.GetAsync(request.MailId);
 
             if (mail is null)
-                throw AppException.NotExisting(typeof(Mail).Name, request.CommandId);
+                throw AppException.NotExisting(typeof(Mail).Name, request.MailId);
 
             mail.Edit(request.From, request.To, request.Subject, request.Body, request.IsBodyHtml, request.Priority);
 

@@ -53,7 +53,7 @@ namespace MailService.Api.Controllers
             return Ok();
         }
 
-        [HttpPost("/send")]
+        [HttpPost("send")]
         public async Task<IActionResult> SendAllPendingMails()
         {
             await _commandBus.Send(new SendAllPendingMailsCmd());

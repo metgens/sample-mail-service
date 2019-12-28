@@ -59,6 +59,7 @@ namespace MailService.Api
             builder.Populate(services);
             builder.RegisterModule(new DataAutofacModule());
             builder.RegisterModule(new MediatrBusAutofacModule());
+            builder.RegisterModule(new MailSenderAutofacModule());
             ApplicationContainer = builder.Build();
 
             return new AutofacServiceProvider(ApplicationContainer);
