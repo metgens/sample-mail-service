@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using MailService.Data.Repositories.Base;
 using System.Reflection;
 
 namespace MailService.Data.AutofacModules
@@ -13,6 +14,8 @@ namespace MailService.Data.AutofacModules
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces();
 
+            builder.RegisterGeneric(typeof(Repository<>))
+                .As(typeof(IRepository<>));
         }
     }
 }

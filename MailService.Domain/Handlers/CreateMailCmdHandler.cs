@@ -23,6 +23,7 @@ namespace MailService.Domain.Handlers
         {
             var mail = Mail.Create(request.From, request.To, request.Subject, request.Body, request.IsHtml);
 
+            _mailRepository.Add(mail);
             await _mailRepository.SaveChangesAsync();
             
             return Unit.Value;

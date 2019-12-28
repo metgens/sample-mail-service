@@ -32,6 +32,7 @@ namespace MailService.Domain.Handlers
         {
             public GetAllMailsQueryProfile()
             {
+                CreateMap<PagedResult<Mail>, PagedResult<MailDto>>();
                 CreateMap<Mail, MailDto>();
                 CreateMap<MailAttachment, MailAttachmentWithoutContentDto>();
             }

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,8 +27,8 @@ namespace MailService.Data
 
             modelBuilder.HasDefaultSchema(DbSchema);
             SetupPrimaryKeys(modelBuilder);
-            SetupForeignKeys(modelBuilder);
             SetupEnums(modelBuilder);
+            SetupListConversion(modelBuilder);
         }
 
 
@@ -38,11 +39,13 @@ namespace MailService.Data
            
         }
 
-        private void SetupForeignKeys(ModelBuilder modelBuilder)
+        private void SetupListConversion(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Mail>()
-                          .HasMany<MailAttachment>()
-                          .WithOne(x => x.Mail);
+            .Property(e => e.To)
+            .HasConversion(
+                v => string.Join(';', v),
+                v => v.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList());
         }
 
         private void SetupEnums(ModelBuilder modelBuilder)

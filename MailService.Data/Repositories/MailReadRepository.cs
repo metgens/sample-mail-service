@@ -20,7 +20,7 @@ namespace MailService.Data.Repositories
         {
             return await _context.Mails
                 .Include(x => x.Attachments)
-                .GetPagedAsync<Mail>(query);
+                .GetPagedAsync(query);
         }
     }
 }

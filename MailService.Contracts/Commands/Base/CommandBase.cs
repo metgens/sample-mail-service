@@ -7,16 +7,16 @@ namespace MailService.Contracts.Commands.Base
 {
     public class CommandBase : ICommand
     {
-        public Guid Id { get; }
+        public Guid CommandId { get; }
 
         public CommandBase()
         {
-            Id = Guid.NewGuid();
+            CommandId = Guid.NewGuid();
         }
 
-        protected CommandBase(Guid id)
+        protected CommandBase(Guid commandId)
         {
-            Id = id;
+            CommandId = commandId;
         }
     }
 }

@@ -23,10 +23,10 @@ namespace MailService.Domain.Handlers
 
         public async Task<Unit> Handle(RemoveMailAttachmentCmd request, CancellationToken cancellationToken)
         {
-            var mail = await _mailRepository.GetAsync(request.Id);
+            var mail = await _mailRepository.GetAsync(request.CommandId);
 
             if (mail is null)
-                throw AppException.NotExisting(typeof(Mail).Name, request.Id);
+                throw AppException.NotExisting(typeof(Mail).Name, request.CommandId);
 
             mail.RemoveAttachment(request.AttachmentId);
 
