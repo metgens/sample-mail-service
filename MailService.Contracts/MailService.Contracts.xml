@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MailService.Contracts</name>
+    </assembly>
+    <members>
+        <member name="P:MailService.Contracts.Commands.AddMailAttachmentCmd.Name">
+            <summary>
+            Attachment file name
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.AddMailAttachmentCmd.Content">
+            <summary>
+            Content of the attachment
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.AddMailAttachmentCmd.Encoding">
+            <summary>
+            Encoding of mail attachment
+            </summary>
+            <seealso cref="!:https://docs.microsoft.com/pl-pl/dotnet/api/system.text.encoding?view=netframework-4.8"/>
+        </member>
+        <member name="P:MailService.Contracts.Commands.AddMailAttachmentCmd.MediaType">
+            <summary>
+            Media type names
+            </summary>
+            <seealso cref="!:https://docs.microsoft.com/pl-pl/dotnet/api/system.net.mime.mediatypenames?view=netframework-4.8"/>
+        </member>
+        <member name="P:MailService.Contracts.Commands.AddMailAttachmentSimplifiedCmd.Name">
+            <summary>
+            Attachment file name
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.AddMailAttachmentSimplifiedCmd.Content">
+            <summary>
+            Content of the attachment
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.AddMailAttachmentSimplifiedCmd.Encoding">
+            <summary>
+            Encoding of mail attachment
+            </summary>
+            <seealso cref="!:https://docs.microsoft.com/pl-pl/dotnet/api/system.text.encoding?view=netframework-4.8"/>
+        </member>
+        <member name="P:MailService.Contracts.Commands.AddMailAttachmentSimplifiedCmd.MediaType">
+            <summary>
+            Media type names
+            </summary>
+            <seealso cref="!:https://docs.microsoft.com/pl-pl/dotnet/api/system.net.mime.mediatypenames?view=netframework-4.8"/>
+        </member>
+        <member name="P:MailService.Contracts.Commands.CreateMailCmd.MailId">
+            <summary>
+            Id of mail, set automatically
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.CreateMailCmd.From">
+            <summary>
+            Sender mail address
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.CreateMailCmd.To">
+            <summary>
+            Collection of recipients' mail addresses
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.CreateMailCmd.Subject">
+            <summary>
+            Mail subject
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.CreateMailCmd.Body">
+            <summary>
+            Body of the mail. It can be plain text or html
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.CreateMailCmd.IsHtml">
+            <summary>
+            When body is html it should be set true
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.CreateMailCmd.Priority">
+            <summary>
+            Mail priority, possible values: 'Normal', 'Low', 'High'. Defualt is 'Normal'
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.CreateMailCmd.Attachments">
+            <summary>
+            Collection of mail attachments
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.EditMailCmd.MailId">
+            <summary>
+            Id of mail to edit
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.EditMailCmd.From">
+            <summary>
+            Sender mail address
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.EditMailCmd.To">
+            <summary>
+            Collection of recipients' mail addresses. Collection is replaced with this value, not updated.
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.EditMailCmd.Subject">
+            <summary>
+            Mail subject
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.EditMailCmd.Body">
+            <summary>
+            Body of mail. It can be plain text or html
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.EditMailCmd.IsBodyHtml">
+            <summary>
+            When body is html it should be set true
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.EditMailCmd.Priority">
+            <summary>
+            Mail priority, possible values: 'Normal', 'Low', 'High'. Defualt is 'Normal'
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Commands.SendPendingMailsCmd.MaxNumberToSend">
+            <summary>
+            Maximum number of pending mails to send when executing this command
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailAttachmentWithoutContentDto.Id">
+            <summary>
+            Attachment Id
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailAttachmentWithoutContentDto.Name">
+            <summary>
+            Attachment file name
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailAttachmentWithoutContentDto.MediaType">
+            <summary>
+            Attachment media type
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailAttachmentWithoutContentDto.Encoding">
+            <summary>
+            Mail content encoding
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.Id">
+            <summary>
+            Mail Id
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.From">
+            <summary>
+            Sender mail address
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.To">
+            <summary>
+            Collection of recipients' mail addresses
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.Subject">
+            <summary>
+            Mail subject
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.Body">
+            <summary>
+            Body of the mail. It can be plain text or html
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.IsHtml">
+            <summary>
+            When body is html it should be set true
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.Priority">
+            <summary>
+            Mail priority, possible values: 'Normal', 'Low', 'High'. Defualt is 'Normal'
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.Status">
+            <summary>
+            Mail status, possible values: 'Pending' - ready to send, 'Draft' - incomplete, 'Sent', 'Rejected' - delivery failed.
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.CreatedDate">
+            <summary>
+            Date when mail was created
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.SentDate">
+            <summary>
+            Delivery date
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.DTOs.MailDto.Attachments">
+            <summary>
+            Attachments
+            </summary>
+        </member>
+        <member name="T:MailService.Contracts.Enums.CustomMailPriority">
+            <summary>
+            Name starting with custom to distinguish from 'MailPriority' class from System namespace
+            </summary>
+        </member>
+    </members>
+</doc>

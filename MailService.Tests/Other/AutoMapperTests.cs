@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MailService.Domain.Handlers;
+using MailService.Domain.MappingProfiles;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace MailService.Tests.Other
         {
             var configuration = new MapperConfiguration(cfg =>
             {
-                var profiles = typeof(GetAllMailsQueryHandler).Assembly.GetTypes().Where(x => typeof(Profile).IsAssignableFrom(x));
+                var profiles = typeof(MailMappingProfile).Assembly.GetTypes().Where(x => typeof(Profile).IsAssignableFrom(x));
                 foreach (var profile in profiles)
                 {
                     cfg.AddProfile(Activator.CreateInstance(profile) as Profile);

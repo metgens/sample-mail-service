@@ -6,9 +6,23 @@ namespace MailService.Contracts.Commands
 {
     public class AddMailAttachmentSimplifiedCmd
     {
+        /// <summary>
+        /// Attachment file name
+        /// </summary>
         public string Name { get; }
+        /// <summary>
+        /// Content of the attachment
+        /// </summary>
         public string Content { get; }
+        /// <summary>
+        /// Encoding of mail attachment
+        /// </summary>
+        /// <seealso cref="https://docs.microsoft.com/pl-pl/dotnet/api/system.text.encoding?view=netframework-4.8"/>
         public string Encoding { get; }
+        /// <summary>
+        /// Media type names
+        /// </summary>
+        /// <seealso cref="https://docs.microsoft.com/pl-pl/dotnet/api/system.net.mime.mediatypenames?view=netframework-4.8"/>
         public string MediaType { get; }
 
         [JsonConstructor]

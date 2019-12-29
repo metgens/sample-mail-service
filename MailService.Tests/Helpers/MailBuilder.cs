@@ -8,14 +8,22 @@ namespace MailService.Tests.Helpers
 {
     public class MailBuilder
     {
-
+        private Guid _id;
         private string _from, _subject, _body;
         private List<string> _to = new List<string>();
         private CustomMailPriority _priority;
         private bool _isHtml;
-
+        private List<MailAttachment> _attcahments = new List<MailAttachment>();
+        
         public MailBuilder()
         {
+            _id = Guid.NewGuid();
+        }
+
+        public MailBuilder SetId(Guid id)
+        {
+            _id = id;
+            return this;
         }
 
         public MailBuilder SetFrom(string from = "from@mail.com")
@@ -54,14 +62,25 @@ namespace MailService.Tests.Helpers
             return this;
         }
 
-        public Mail Build()
+        public MailBuilder SetDefaults()
         {
-            return new Mail(_from, _to, _subject, _body, _isHtml, _priority.ToString());
+            return SetFrom().SetTo().SetSubject().SetBody();
         }
 
-        public Mail BuildDefault()
+        public MailBuilder AddTextAttachment(string name = "Test name", string content = "Test content", Guid? id = null)
         {
-            return SetFrom().SetTo().SetSubject().SetBody().Build();
+            _attcahments.Add(new MailAttachment(id ?? Guid.NewGuid(), name, content, "utf-8", "text/plain"));
+
+            return this;
+        }
+
+        public Mail Build()
+        {
+            var mail = new Mail(_id, _from, _to, _subject, _body, _isHtml, _priority.ToString());
+            foreach (var attachment in _attcahments)
+                mail.AddAttachment(attachment.Name, attachment.Content, attachment.Encoding, attachment.MediaType);
+
+            return mail;
         }
     }
 }

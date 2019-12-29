@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MailService.Api</name>
+    </assembly>
+    <members>
+        <member name="M:MailService.Api.Controllers.MailsController.CreateMail(MailService.Contracts.Commands.CreateMailCmd)">
+            <summary>
+            Create a new mail, without sending it.
+            </summary>
+            <response code="400">Bad request</response>     
+        </member>
+        <member name="M:MailService.Api.Controllers.MailsController.EditMail(System.Guid,MailService.Contracts.Commands.EditMailCmd)">
+            <summary>
+            Edit exisiting, not sent mail.
+            </summary>
+            <response code="400">Bad request</response>     
+            <response code="404">Mail with provided Id does not exist</response>     
+            <response code="409">Sent mail edition not allowed</response>     
+        </member>
+        <member name="M:MailService.Api.Controllers.MailsController.AddMailAttachment(System.Guid,MailService.Contracts.Commands.AddMailAttachmentCmd)">
+            <summary>
+            Add single attachment to exisiting, not sent mail.
+            </summary>
+            <response code="400">Bad request</response>     
+            <response code="404">Mail with provided Id does not exist.</response>     
+            <response code="409">Sent mail edition not allowed</response>  
+        </member>
+        <member name="M:MailService.Api.Controllers.MailsController.RemoveMailAttachment(System.Guid,System.Guid)">
+            <summary>
+            Remove single attachment from exisiting, not sent mail.
+            </summary>
+            <response code="400">Bad request</response>     
+            <response code="404">Mail with provided Id does not exist.</response>     
+            <response code="409">Sent mail edition not allowed</response>  
+        </member>
+        <member name="M:MailService.Api.Controllers.MailsController.SendPendingMails(System.Int32)">
+            <summary>
+            Send pending mails. Maximum number of mails to send is provided in request parameter.
+            </summary>
+            <response code="500">Mail sender error</response> 
+        </member>
+        <member name="M:MailService.Api.Controllers.MailsController.SendMail(System.Guid)">
+            <summary>
+            Send the specified not sent mail or resend sent one.
+            </summary>
+            <response code="500">Mail sender error</response>  
+            <response code="404">Mail with provided Id does not exist.</response>   
+        </member>
+        <member name="M:MailService.Api.Controllers.MailsController.GetAllMails(MailService.Contracts.Queries.GetAllMailsQuery)">
+            <summary>
+            Get all mails paginated
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MailService.Api.Controllers.MailsController.GetMail(System.Guid)">
+            <summary>
+            Get the specified mail
+            </summary>
+            <param name="mailId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MailService.Api.Controllers.MailsController.GetMailStatus(System.Guid)">
+            <summary>
+            Get the specified mail status (pending, sent, draft)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MailService.Api.Exceptions.ErrorResponseExtensions.ToErrorResponse(MailService.Common.Exceptions.AppException,System.Boolean)">
+            <summary>
+            Convert exception into error response structure
+            </summary>
+            <param name="exception">Source exception</param>
+            <param name="withDebugInfo">If true - stack trace is filled in</param>
+            <returns></returns>
+        </member>
+        <member name="T:MailService.Api.Exceptions.ErrorResponse">
+            <summary>
+            Generic error response
+            </summary>
+        </member>
+        <member name="P:MailService.Api.Exceptions.ErrorResponse.UserMessage">
+            <summary>
+            Message to user, can be displayed as for example toast text
+            </summary>
+        </member>
+        <member name="P:MailService.Api.Exceptions.ErrorResponse.Message">
+            <summary>
+            Error message for developer
+            </summary>
+        </member>
+        <member name="P:MailService.Api.Exceptions.ErrorResponse.Code">
+            <summary>
+            Error code
+            </summary>
+        </member>
+        <member name="P:MailService.Api.Exceptions.ErrorResponse.StackTrace">
+            <summary>
+            Stack trace, filled in only in debug environment
+            </summary>
+        </member>
+    </members>
+</doc>

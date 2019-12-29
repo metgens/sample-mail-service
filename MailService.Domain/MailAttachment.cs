@@ -14,12 +14,14 @@ namespace MailService.Domain
         public string Encoding { get; private set; }
         public string MediaType { get; private set; }
 
-        public MailAttachment (string name, string content, string encoding, string mediaType)
+        public MailAttachment (Guid id, string name, string content, string encoding, string mediaType)
         {
+            Id = id;
             Name = name;
             Content = content;
             MediaType = mediaType;
             Encoding = encoding;
         }
+
     }
 }

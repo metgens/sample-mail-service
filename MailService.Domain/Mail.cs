@@ -26,8 +26,9 @@ namespace MailService.Domain
 
         public Mail() { }
 
-        public Mail(string from, List<string> to, string subject, string body, bool isHtml, string priority = null)
+        public Mail(Guid id, string from, List<string> to, string subject, string body, bool isHtml, string priority = null)
         {
+            Id = id;
             From = from;
             To = to;
             Subject = subject;
@@ -75,7 +76,7 @@ namespace MailService.Domain
         {
             CheckRule(new OnlyNotSentMailsCanBeEdited(this));
 
-            Attachments.Add(new MailAttachment(name, content, encoding, mediaType));
+            Attachments.Add(new MailAttachment(Guid.NewGuid(), name, content, encoding, mediaType));
             SetUpdatedDate();
         }
 

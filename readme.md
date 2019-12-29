@@ -1,6 +1,9 @@
 # Introduction
 
-# Architecture
+# Running locally
+
+- `dotnet 
+- Swagger address: https://localhost:5001/swagger/index.html
 
 ## Validation
 

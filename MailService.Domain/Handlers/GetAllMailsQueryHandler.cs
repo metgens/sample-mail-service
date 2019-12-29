@@ -4,7 +4,6 @@ using MailService.Common.Pagination;
 using MailService.Contracts.DTOs;
 using MailService.Contracts.Queries;
 using MailService.Domain.Repositories;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -27,16 +26,5 @@ namespace MailService.Domain.Handlers
 
             return _mapper.Map<PagedResult<MailDto>>(results);
         }
-
-        public class GetAllMailsQueryProfile : Profile
-        {
-            public GetAllMailsQueryProfile()
-            {
-                CreateMap<PagedResult<Mail>, PagedResult<MailDto>>();
-                CreateMap<Mail, MailDto>();
-                CreateMap<MailAttachment, MailAttachmentWithoutContentDto>();
-            }
-        }
-
     }
 }
