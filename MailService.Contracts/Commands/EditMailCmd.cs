@@ -1,4 +1,5 @@
-﻿using MailService.Contracts.Commands.Base;
+﻿using FluentValidation;
+using MailService.Contracts.Commands.Base;
 using MailService.Contracts.Enums;
 using Newtonsoft.Json;
 using System;
@@ -32,6 +33,16 @@ namespace MailService.Contracts.Commands
         public void SetMailId(Guid mailId)
         {
             MailId = mailId;
+        }
+    }
+
+    public class EditMailCmdValidator : AbstractValidator<EditMailCmd>
+    {
+        public EditMailCmdValidator()
+        {
+            RuleFor(x => x.From).EmailAddress();
+            RuleForEach(x => x.To).EmailAddress();
+            RuleFor(x => x.Priority).IsEnumName(typeof(CustomMailPriority), caseSensitive: false);
         }
     }
 }

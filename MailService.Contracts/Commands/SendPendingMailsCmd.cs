@@ -7,6 +7,12 @@ namespace MailService.Contracts.Commands
 {
     public class SendPendingMailsCmd : CommandBase
     {
-        public int MaxNumberToSend { get; set; } = 500;
+        public int MaxNumberToSend { get; }
+
+        [JsonConstructor]
+        public SendPendingMailsCmd(int maxNumberToSend = 500)
+        {
+            MaxNumberToSend = maxNumberToSend;
+        }
     }
 }

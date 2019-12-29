@@ -22,20 +22,22 @@ namespace MailService.Domain
         public MailStatus Status { get; private set; } = MailStatus.Pending;
         public DateTimeOffset? SentDate { get; private set; }
         public List<MailAttachment> Attachments { get; private set; } = new List<MailAttachment>();
+        
+        public Mail() { }
 
-        public static Mail Create(string from, List<string> to, string subject, string body, bool isHtml)
+        public Mail(string from, List<string> to, string subject, string body, bool isHtml, string priority = null)
         {
-            return new Mail()
-            {
-                From = from,
-                To = to,
-                Subject = subject,
-                Body = body,
-                IsHtml = isHtml
-            };
+            From = from;
+            To = to;
+            Subject = subject;
+            Body = body;
+            IsHtml = isHtml;
+
+            if (!(priority is null))
+                ChangePriority(priority);
         }
 
-        public void Edit(string from, List<string> to, string subject, string body, bool isHtml, CustomMailPriority? priority = null)
+        public void Edit(string from, List<string> to, string subject, string body, bool isHtml, string priority = null)
         {
             CheckRule(new OnlyPendingMailCanBeEdited(this));
 
@@ -48,7 +50,7 @@ namespace MailService.Domain
             SetUpdatedDate();
 
             if (!(priority is null))
-                ChangePriority(priority.Value);
+                ChangePriority(priority);
         }
 
         public void MarkAsSent(DateTimeOffset? date = null)
@@ -91,11 +93,14 @@ namespace MailService.Domain
             SetUpdatedDate();
         }
 
-        public void ChangePriority(CustomMailPriority priority)
+        public void ChangePriority(string priority)
         {
             CheckRule(new OnlyPendingMailCanBeEdited(this));
 
-            Priority = priority;
+            if (!Enum.TryParse(priority, out CustomMailPriority parsedPriority))
+                throw new AppException("Incorrect 'priority' value", $"Incorrect priority value '{priority}'. Change failed for mail with id: {Id}", ErrorCode.BadRequest);
+
+            Priority = parsedPriority;
             SetUpdatedDate();
         }
     }

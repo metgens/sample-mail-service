@@ -21,7 +21,7 @@ namespace MailService.Domain.Handlers
 
         public async Task<Unit> Handle(CreateMailCmd request, CancellationToken cancellationToken)
         {
-            var mail = Mail.Create(request.From, request.To, request.Subject, request.Body, request.IsHtml);
+            var mail = new Mail(request.From, request.To, request.Subject, request.Body, request.IsHtml, request.Priority);
 
             if (request.Attachments != null)
             {

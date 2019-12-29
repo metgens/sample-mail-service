@@ -1,39 +1,30 @@
 ﻿using FluentValidation;
 using MailService.Common.Helpers;
-using MailService.Contracts.Commands.Base;
 using Newtonsoft.Json;
-using System;
-using System.Text;
 
 namespace MailService.Contracts.Commands
 {
-    public class AddMailAttachmentCmd : CommandBase
+    public class AddMailAttachmentSimplifiedCmd
     {
-        public Guid MailId { get; private set; }
         public string Name { get; }
         public string Content { get; }
-        public string MediaType { get; }
         public string Encoding { get; }
+        public string MediaType { get; }
 
         [JsonConstructor]
-        public AddMailAttachmentCmd(Guid mailId, string name, string content, string encoding, string mediaType)
+        public AddMailAttachmentSimplifiedCmd(string name, string content, string encoding, string mediaType)
         {
-            MailId = mailId;
             Name = name;
             Content = content;
             Encoding = encoding;
             MediaType = mediaType;
         }
 
-        public void SetMailId(Guid mailId)
-        {
-            MailId = mailId;
-        }
     }
 
-    public class AddMailAttachmentCmdValidator : AbstractValidator<AddMailAttachmentCmd>
+    public class AddMailAttachmentSimplifiedCmdValidator : AbstractValidator<AddMailAttachmentSimplifiedCmd>
     {
-        public AddMailAttachmentCmdValidator()
+        public AddMailAttachmentSimplifiedCmdValidator()
         {
             RuleFor(x => x.Content).NotEmpty().MaximumLength(8000);
             RuleFor(x => x.Encoding).Must(ValidationHelpers.BeValidEncoding).WithMessage($"Unknown encoding.");

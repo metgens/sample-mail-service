@@ -2,8 +2,9 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
+using MailService.Api.Logging;
+using MailService.Api.Validation;
 using MailService.Common.AutofacModules;
-using MailService.Common.Bus.Behaviors;
 using MailService.Data;
 using MailService.Data.AutofacModules;
 using MailService.Domain.Handlers;
@@ -38,6 +39,7 @@ namespace MailService.Api
 
             //MEDIATR
             services.AddMediatR(typeof(CreateMailCmdHandler).Assembly); //domain
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidateCommandBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingCommandsBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingQueriesBehavior<,>));
 
@@ -57,6 +59,7 @@ namespace MailService.Api
             builder.RegisterModule(new DataAutofacModule());
             builder.RegisterModule(new MediatrBusAutofacModule());
             builder.RegisterModule(new MailSenderAutofacModule());
+            builder.RegisterModule(new ValidationAutofacModule());
             ApplicationContainer = builder.Build();
 
             return new AutofacServiceProvider(ApplicationContainer);

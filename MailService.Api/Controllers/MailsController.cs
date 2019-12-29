@@ -56,9 +56,9 @@ namespace MailService.Api.Controllers
         }
 
         [HttpPost("send")]
-        public async Task<IActionResult> SendPendingMails()
+        public async Task<IActionResult> SendPendingMails([FromQuery]int maxNumberToSend = 500)
         {
-            await _commandBus.Send(new SendPendingMailsCmd());
+            await _commandBus.Send(new SendPendingMailsCmd(maxNumberToSend));
             return Accepted();
         }
 

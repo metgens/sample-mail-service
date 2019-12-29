@@ -1,11 +1,12 @@
-﻿using MailService.Contracts.Commands.Base;
+﻿using FluentValidation;
+using MailService.Contracts.Commands.Base;
 using MailService.Contracts.Enums;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace MailService.Contracts.Commands
 {
-    public class CreateMailCmd : CommandBase
+    public partial class CreateMailCmd : CommandBase
     {
         public string From { get; }
         public List<string> To { get; }
@@ -30,23 +31,16 @@ namespace MailService.Contracts.Commands
             Priority = priority;
             Attachments = attachments ?? new List<AddMailAttachmentSimplifiedCmd>();
         }
+    }
 
-        public class AddMailAttachmentSimplifiedCmd
+    public class CreateMailCmdValidator : AbstractValidator<CreateMailCmd>
+    {
+        public CreateMailCmdValidator()
         {
-            public string Name { get; }
-            public string Content { get; }
-            public string Encoding { get; }
-            public string MediaType { get; }
-            
-            [JsonConstructor]
-            public AddMailAttachmentSimplifiedCmd(string name, string content, string encoding, string mediaType)
-            {
-                Name = name;
-                Content = content;
-                Encoding = encoding;
-                MediaType = mediaType;
-            }
-
+            RuleFor(x => x.From).EmailAddress();
+            RuleForEach(x => x.To).EmailAddress();
+            RuleFor(x => x.Priority).IsEnumName(typeof(CustomMailPriority), caseSensitive: false);
+            RuleForEach(x => x.Attachments).SetValidator(new AddMailAttachmentSimplifiedCmdValidator());
         }
     }
 }

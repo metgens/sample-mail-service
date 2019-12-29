@@ -6,7 +6,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace MailService.Common.Bus.Behaviors
+namespace MailService.Api.Logging
 {
     public class LoggingCommandsBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : ICommand
     {
