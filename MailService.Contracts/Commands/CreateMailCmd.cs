@@ -39,6 +39,7 @@ namespace MailService.Contracts.Commands
         {
             RuleFor(x => x.From).EmailAddress();
             RuleForEach(x => x.To).EmailAddress();
+            RuleFor(x => x).Must(x => x.From != null || x.To != null || x.Body != null || x.Subject != null).WithMessage("Cannot save empty object.");
             RuleFor(x => x.Priority).IsEnumName(typeof(CustomMailPriority), caseSensitive: false);
             RuleForEach(x => x.Attachments).SetValidator(new AddMailAttachmentSimplifiedCmdValidator());
         }

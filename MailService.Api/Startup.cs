@@ -2,6 +2,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
+using MailService.Api.Exceptions;
 using MailService.Api.Logging;
 using MailService.Api.Validation;
 using MailService.Common.AutofacModules;
@@ -31,7 +32,11 @@ namespace MailService.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(GlobalExceptionFilter));
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //EF
             services.AddDbContext<MailServiceContext>(options =>
