@@ -1,4 +1,6 @@
-﻿using MailService.Common.Bus.Event;
+﻿using FluentAssertions;
+using MailService.Common.Bus.Event;
+using MailService.Common.Exceptions;
 using MailService.Contracts.Commands;
 using MailService.Contracts.Events;
 using MailService.Domain;
@@ -8,14 +10,14 @@ using MailService.Domain.Repositories;
 using MailService.Tests.Helpers;
 using Moq;
 using NUnit.Framework;
-using System.Collections.Generic;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace MailService.Tests.Handlers
 {
     [TestFixture]
-    public class SendPendingMailsCmdHandlerTests : AutoMockerTests
+    public class SendMailCmdHandlerTests : AutoMockerTests
     {
         private Mock<IMailWriteRepository> _mailWriteRepositoryMock;
         private Mock<IMailSenderFacade> _mailSenderFacade;
@@ -35,19 +37,34 @@ namespace MailService.Tests.Handlers
         public async Task Should_SaveChangesAndSendEvent()
         {
             //arrange
-            var mb = new MailBuilder();
-            var mails = new List<Mail> { mb.SetDefaults().Build(), mb.SetDefaults().Build() };
+            var mail = new MailBuilder().SetDefaults().Build();
 
-            _mailWriteRepositoryMock.Setup(x => x.GetPendingAsync(It.IsAny<int>())).ReturnsAsync(mails);
-            var target = Mocker.CreateInstance<SendPendingMailsCmdHandler>();
-            var request = new SendPendingMailsCmd();
+            _mailWriteRepositoryMock.Setup(x => x.GetAsync(It.IsAny<Guid>())).ReturnsAsync(mail);
+            var target = Mocker.CreateInstance<SendMailCmdHandler>();
+            var request = new SendMailCmd(Guid.NewGuid());
 
             //act
             await target.Handle(request, CancellationToken.None);
 
             //assert
-            _mailWriteRepositoryMock.Verify(x => x.SaveChangesAsync(), Times.Exactly(2));
+            _mailWriteRepositoryMock.Verify(x => x.SaveChangesAsync(), Times.Once);
             _eventBusMock.Verify(x => x.Publish(It.IsAny<SendingMailsCompletedEvent>()), Times.Once);
+        }
+
+        [Test]
+        public async Task For_NotExistingMail_Should_ThrowEx()
+        {
+            //arrange
+
+            _mailWriteRepositoryMock.Setup(x => x.GetAsync(It.IsAny<Guid>())).ReturnsAsync((Mail)null); //not exisitng mail
+            var target = Mocker.CreateInstance<SendMailCmdHandler>();
+            var request = new SendMailCmd(Guid.NewGuid());
+
+            //act
+            Func<Task> act = async () => await target.Handle(request, CancellationToken.None);
+
+            //assert
+            act.Should().Throw<AppException>();
         }
 
     }

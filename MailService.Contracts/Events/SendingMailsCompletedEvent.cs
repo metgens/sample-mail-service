@@ -10,22 +10,31 @@ namespace MailService.Contracts.Events
         /// <summary>
         /// Number of sent mails
         /// </summary>
-        public int MailsSentNo { get; set; }
+        public int MailsSentNo { get; private set; }
         /// <summary>
         /// Number of rejected (failed) mails
         /// </summary>
-        public int MailsRejectedNo { get; set; }
+        public int MailsRejectedNo { get; private set; }
         /// <summary>
         /// Mail Id and reason for rejected mails
         /// </summary>
-        public Dictionary<Guid, string> RejectionReasons { get; set; }
+        public Dictionary<Guid, string> RejectionReasons { get; private set; }
 
 
-        public SendingMailsCompletedEvent(int mailsSentNo, int mailsRejectedNo, Dictionary<Guid, string> rejectionReasons = null)
+        public SendingMailsCompletedEvent()
         {
-            MailsSentNo = mailsSentNo;
-            MailsRejectedNo = mailsRejectedNo;
-            RejectionReasons = rejectionReasons;
+            RejectionReasons = new Dictionary<Guid, string>();
+        }
+
+        public void ReportSucceded()
+        {
+            MailsSentNo++;
+        }
+
+        public void ReportRejected(Guid mailId, string rejectionMessage)
+        {
+            MailsRejectedNo++;
+            RejectionReasons.Add(mailId, rejectionMessage);
         }
     }
 }
