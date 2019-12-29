@@ -17,6 +17,8 @@ It contain REST API which allows:
 
 ## CQRS
 
+![CQRS diagram](docs\images/cqrs.png)
+
 - Main architecture is based on CQRS concept
 - Commands and Queries use in-memory bus [MediatR](https://github.com/jbogard/MediatR)
 - Because data model is simple, read/write sides use same tables in relational (MSSQL) database
