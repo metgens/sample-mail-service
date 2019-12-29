@@ -95,7 +95,7 @@ namespace MailService.Api.Controllers
         /// </summary>
         /// <response code="500">Mail sender error</response> 
         [HttpPost("send")]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(202)]
         [ProducesResponseType(typeof(ErrorResponse), 404)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> SendPendingMails([FromQuery]int maxNumberToSend = 500)
@@ -110,7 +110,7 @@ namespace MailService.Api.Controllers
         /// <response code="500">Mail sender error</response>  
         /// <response code="404">Mail with provided Id does not exist.</response>   
         [HttpPost("{mailId}/send")]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(202)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> SendMail([FromRoute]Guid mailId)
         {
