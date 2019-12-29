@@ -17,7 +17,7 @@ It contain REST API which allows:
 
 ## CQRS
 
-![CQRS diagram](docs\images/cqrs.png)
+![CQRS diagram](https://github.com/metgens/sample-mail-service-api/blob/master/docs/images/cqrs.png)
 
 - Main architecture is based on CQRS concept
 - Commands and Queries use in-memory bus [MediatR](https://github.com/jbogard/MediatR)
