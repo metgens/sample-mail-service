@@ -208,5 +208,20 @@
             Name starting with custom to distinguish from 'MailPriority' class from System namespace
             </summary>
         </member>
+        <member name="P:MailService.Contracts.Events.SendingMailsCompletedEvent.MailsSentNo">
+            <summary>
+            Number of sent mails
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Events.SendingMailsCompletedEvent.MailsRejectedNo">
+            <summary>
+            Number of rejected (failed) mails
+            </summary>
+        </member>
+        <member name="P:MailService.Contracts.Events.SendingMailsCompletedEvent.RejectionReasons">
+            <summary>
+            Mail Id and reason for rejected mails
+            </summary>
+        </member>
     </members>
 </doc>
